@@ -321,47 +321,74 @@
             </div>
           </div>
 
+          <form action="" name="f1" method="post" id="submit-form"  class="contact__form">
+            <table style="width: 100%">
+            <div class="contact__form-field">
+                  <tr>
+                  <td><label class="contact__form-label" for="email">Name</label><input type="text" class="contact__form-input" id="inpn" name = "name" placeholder="enter your name"></td>
+                  </tr>             
+                  <tr>
+                  <td><p class="ere"  id="pname"></p></td>
+                  </tr>
+            </div>
 
-          <form id="submit-form" action="" class="contact__form">
+
+
             <div class="contact__form-field">
-              <label class="contact__form-label" for="name">Name</label>
-              <input
-                required
-                placeholder="Enter Your Name"
-                type="text"
-                class="contact__form-input"
-                name="name"
-                id="name"
-              />
+                  <tr>
+                  <td><label class="contact__form-label" for="email">Email</label><input type="email"id="inpe"  class="contact__form-input" name = "email" placeholder="enter your Email ID" data-rule="required"></td>
+                  </tr>
+                  <tr>
+                  <td><p class="ere" id="pemail"></p></td>
+                  </tr>
             </div>
-            <div class="contact__form-field">
-              <label class="contact__form-label" for="email">Email</label>
-              <input
-                required
-                placeholder="Enter Your Email"
-                type="text"
-                class="contact__form-input"
-                name="email"
-                id="email"
-              />
-            </div>
-            <div class="contact__form-field">
-              <label class="contact__form-label" for="message">Message</label>
-              <textarea
-                required
-                cols="30"
-                rows="10"
-                class="contact__form-input"
-                placeholder="Enter Your Message"
-                name="message"
-                id="message"
-              ></textarea>
-            </div>
-            <button type="submit" class="btn btn--theme contact__btn">
-              Submit
-            </button>
-          </form>
+
+
+            <div class="contact__form-field"></div>
+                    <tr>
+                    <td><label class="contact__form-label" for="email">Message</label><textarea name="textArea" class="contact__form-input" id="inpa" id="" cols="30" rows="10"></textarea></td>
+                    </tr>
+                    <tr>
+                    <td><p class="ere" id="parea"></p></td>
+                    </tr>
+                    <tr> 
+                    <td><button type="submit" class="btn btn--theme contact__btn" onclick="return validate()">submit</button></td>
+                    </tr> 
+              </table>
+         </form>
+    </div>
           <script>
+            function validate(){
+                if(document.f1.name.value==='')
+                {
+                    document.getElementById("pname").innerHTML="*fill the form";
+                    document.getElementById('inpn').focus;
+                    document.getElementById('inpn').style.borderColor='red'
+                    return false;
+                }
+                else if(!isNaN(document.f1.name.value))
+                {
+                    document.getElementById("pname").innerHTML="*only text";
+                    document.getElementById('inpn').focus;
+                    document.getElementById('inpn').style.borderColor='red'
+                    return false;
+                }
+                else if(document.f1.email.value===""){
+                    document.getElementById("pemail").innerHTML="*fill the form";
+                    document.getElementById('inpe').focus;
+                    document.getElementById('inpe').style.borderColor='red'
+                    return false;
+                }
+                
+                else if(document.f1.textArea.value===""){
+                    document.getElementById("parea").innerHTML="*fill the form";
+                    document.getElementById('inpa').focus;
+                    document.getElementById('inpa').style.borderColor='red'
+                    return false;
+                }
+        
+          else{
+
             $("#submit-form").submit((e)=>{
                 e.preventDefault()
                 $.ajax({
@@ -379,6 +406,8 @@
                     }
                 })
             })
+          }
+        }
         </script>
         </div>
       </div>
