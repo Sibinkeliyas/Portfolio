@@ -359,6 +359,17 @@
     </div>
           <script>
             function validate(){
+
+
+              function email(){
+                        var mailformat = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/; 
+                        if(document.f1.email.value.match(mailformat)){
+                            return true;
+                        }
+                        else{
+                            return false;
+                        }
+                     }
                 if(document.f1.name.value==='')
                 {
                     document.getElementById("pname").innerHTML="*fill the form";
@@ -379,7 +390,13 @@
                     document.getElementById('inpe').style.borderColor='red'
                     return false;
                 }
-                
+                else if(email()==false)
+                {
+                    document.getElementById("pemail").innerHTML="*invalid email";
+                    document.getElementById('inpe').focus;
+                    document.getElementById('inpe').style.borderColor='red'
+                    return false;
+                }
                 else if(document.f1.textArea.value===""){
                     document.getElementById("parea").innerHTML="*fill the form";
                     document.getElementById('inpa').focus;
